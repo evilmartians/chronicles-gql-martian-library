@@ -1,12 +1,9 @@
-import "babel-polyfill";
 import React from "react";
-import { render } from "react-dom";
-import Provider from "../components/Provider";
-import Library from "../components/Library";
+import { ApolloProvider } from "react-apollo";
+import { createCache, createClient } from "../../utils/apollo";
 
-render(
-  <Provider>
-    <Library />
-  </Provider>,
-  document.querySelector("#root")
+export default ({ children }) => (
+  <ApolloProvider client={createClient(createCache())}>
+    {children}
+  </ApolloProvider>
 );
