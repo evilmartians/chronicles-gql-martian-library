@@ -1,6 +1,10 @@
 {
   "name": "martian_library",
   "private": true,
+  "scripts": {
+    "lint": "eslint client",
+    "format": "prettier 'client/**/*.js' --write"
+  },
   "dependencies": {
     "@babel/preset-react": "^7.0.0",
     "@rails/actioncable": "^6.0.0-alpha",
@@ -23,6 +27,11 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.14.0",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "prettier": "^1.16.4",
     "webpack-dev-server": "^3.6.0"
   }
 }
