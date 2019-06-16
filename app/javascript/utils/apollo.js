@@ -24,13 +24,13 @@ const getTokens = () => {
   return authToken ? { ...tokens, Authorization: authToken } : tokens;
 };
 
-const tokens = getTokens();
-const setTokenForOperation = async operation =>
-  operation.setContext({
+const setTokenForOperation = async operation => {
+  return operation.setContext({
     headers: {
-      ...tokens,
+      ...getTokens(),
     },
   });
+};
 
 // link with token
 const createLinkWithToken = () =>
