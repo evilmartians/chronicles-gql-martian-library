@@ -1,29 +1,37 @@
 // client
-import { ApolloClient } from "apollo-client";
+import { ApolloClient } from 'apollo-client';
 // cache
-import { InMemoryCache } from "apollo-cache-inmemory";
+import { InMemoryCache } from 'apollo-cache-inmemory';
 // links
-import { HttpLink } from "apollo-link-http";
-import { onError } from "apollo-link-error";
-import { ApolloLink, Observable } from "apollo-link";
+import { HttpLink } from 'apollo-link-http';
+import { onError } from 'apollo-link-error';
+import { ApolloLink, Observable } from 'apollo-link';
 export const createCache = () => {
   const cache = new InMemoryCache();
-  if (process.env.NODE_ENV === "development") {
+  if (process.env.NODE_ENV === 'development') {
     window.secretVariableToStoreCache = cache;
   }
   return cache;
 };
 
-// getToken from meta tags
-const getToken = () =>
-  document.querySelector('meta[name="csrf-token"]').getAttribute("content");
-const token = getToken();
+const getTokens = () => {
+  const tokens = {
+    'X-CSRF-Token': document
+      .querySelector('meta[name="csrf-token"]')
+      .getAttribute('content'),
+  };
+  const authToken = localStorage.getItem('mlToken');
+  return authToken ? { ...tokens, Authorization: authToken } : tokens;
+};
+
+const tokens = getTokens();
 const setTokenForOperation = async operation =>
   operation.setContext({
     headers: {
-      "X-CSRF-Token": token
-    }
+      ...tokens,
+    },
   });
+
 // link with token
 const createLinkWithToken = () =>
   new ApolloLink(
@@ -36,7 +44,7 @@ const createLinkWithToken = () =>
             handle = forward(operation).subscribe({
               next: observer.next.bind(observer),
               error: observer.error.bind(observer),
-              complete: observer.complete.bind(observer)
+              complete: observer.complete.bind(observer),
             });
           })
           .catch(observer.error.bind(observer));
@@ -52,21 +60,21 @@ const logError = error => console.error(error);
 const createErrorLink = () =>
   onError(({ graphQLErrors, networkError, operation }) => {
     if (graphQLErrors) {
-      logError("GraphQL - Error", {
+      logError('GraphQL - Error', {
         errors: graphQLErrors,
         operationName: operation.operationName,
-        variables: operation.variables
+        variables: operation.variables,
       });
     }
     if (networkError) {
-      logError("GraphQL - NetworkError", networkError);
+      logError('GraphQL - NetworkError', networkError);
     }
   });
 
 const createHttpLink = () =>
   new HttpLink({
-    uri: "/graphql",
-    credentials: "include"
+    uri: '/graphql',
+    credentials: 'include',
   });
 
 export const createClient = (cache, requestLink) => {
@@ -74,8 +82,8 @@ export const createClient = (cache, requestLink) => {
     link: ApolloLink.from([
       createErrorLink(),
       createLinkWithToken(),
-      createHttpLink()
+      createHttpLink(),
     ]),
-    cache
+    cache,
   });
 };
