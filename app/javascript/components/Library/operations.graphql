@@ -1,0 +1,14 @@
+# /app/javascript/components/Library/operations.graphql
+
+query LibraryQuery {
+  items {
+    id
+    title
+    imageUrl
+    description
+    user {
+      id
+      email
+    }
+  }
+}
