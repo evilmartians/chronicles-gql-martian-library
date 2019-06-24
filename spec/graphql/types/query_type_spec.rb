@@ -8,9 +8,6 @@ RSpec.describe Types::QueryType do
       %(query {
         items {
           title
-          user {
-            fullName
-          }
         }
        })
     end
