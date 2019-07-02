@@ -1,6 +1,5 @@
 class GraphqlController < ApplicationController
   def execute
-    sleep 10
     result = MartianLibrarySchema.execute(
       params[:query],
       variables: ensure_hash(params[:variables]),
