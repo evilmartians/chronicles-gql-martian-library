@@ -1,4 +1,4 @@
-# /app/javascript/components/AddItemForm/operations.graphql
+#import '../../fragments/Item.graphql'
 
 mutation AddItemMutation(
   $title: String!
@@ -7,10 +7,7 @@ mutation AddItemMutation(
 ) {
   addItem(title: $title, description: $description, imageUrl: $imageUrl) {
     item {
-      id
-      title
-      description
-      imageUrl
+      ...ItemFragment
       user {
         id
         email

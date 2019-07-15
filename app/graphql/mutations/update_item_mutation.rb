@@ -12,10 +12,7 @@ module Mutations
     field :errors, [String], null: false
 
     def resolve(id:, title:, description: nil, image_url: nil)
-      if context[:current_user].nil?
-        raise GraphQL::ExecutionError,
-              "You need to authenificate to perform this action"
-      end
+      check_authentication!
 
       item = Item.find(id)
 
