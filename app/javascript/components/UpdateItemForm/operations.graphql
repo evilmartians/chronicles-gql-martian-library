@@ -15,5 +15,10 @@ mutation UpdateItemMutation(
     item {
       ...ItemFragment
     }
+
+    errors {
+      # new field
+      fullMessages
+    }
   }
 }
