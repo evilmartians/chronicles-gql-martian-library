@@ -7,10 +7,12 @@ mutation UpdateItemMutation(
   $imageUrl: String
 ) {
   updateItem(
-    id: $id
-    title: $title
-    description: $description
-    imageUrl: $imageUrl
+    attributes: {
+      id: $id
+      title: $title
+      description: $description
+      imageUrl: $imageUrl
+    }
   ) {
     item {
       ...ItemFragment

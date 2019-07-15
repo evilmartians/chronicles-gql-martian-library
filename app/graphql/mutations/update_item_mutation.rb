@@ -1,25 +1,23 @@
-
 # app/graphql/mutations/update_item_mutation.rb
 
 module Mutations
   class UpdateItemMutation < Mutations::BaseMutation
     argument :id, ID, required: true
-    argument :title, String, required: true
-    argument :description, String, required: false
-    argument :image_url, String, required: false
+    argument :attributes, Types::ItemAttributes, required: true # new argument
 
     field :item, Types::ItemType, null: true
-    field :errors, Types::ValidationErrorsType, null: true # this line has changed
+    field :errors, Types::ValidationErrorsType, null: true # <= change here
 
-    def resolve(id:, title:, description: nil, image_url: nil)
+    def resolve(id:, attributes:)
       check_authentication!
 
       item = Item.find(id)
 
-      if item.update(title: title, description: description, image_url: image_url)
+      if item.update(attributes.to_h)
+        MartianLibrarySchema.subscriptions.trigger("itemUpdated", {}, item)
         { item: item }
       else
-        { errors: item.errors }
+        { errors: item.errors.full_messages }
       end
     end
   end
