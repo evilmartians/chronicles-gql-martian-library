@@ -1,4 +1,5 @@
 // app/javascript/components/Library
+import Subscription from '../Subscription';
 import React, { useState } from 'react';
 import { Query } from 'react-apollo';
 import { LibraryQuery } from './operations.graphql';
@@ -10,7 +11,7 @@ const Library = () => {
   const [errors, setErrors] = useState({});
   return (
     <Query query={LibraryQuery}>
-      {({ data, loading }) => (
+      {({ data, loading, subscribeToMore }) => (
         <div className={cs.library}>
           {loading || !data.items
             ? 'loading...'
@@ -47,6 +48,7 @@ const Library = () => {
               }}
             />
           )}
+          <Subscription subscribeToMore={subscribeToMore} />
         </div>
       )}
     </Query>
