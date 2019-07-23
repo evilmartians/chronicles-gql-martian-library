@@ -2,13 +2,15 @@
 
 Example projecto for "GraphQL on Rails" tutorial:
 
-- [From zero to the first query](https://evilmartians.com/chronicles/graphql-on-rails-1-from-zero-to-the-first-query)—setting up a project, adding first queries to both back-end and front-end applications.
-- [Updating the data](https://evilmartians.com/chronicles/graphql-on-rails-2-updating-the-data)—adding mutations.
-- [On the way to perfection](https://evilmartians.com/chronicles/graphql-on-rails-3-on-the-way-to-perfection)—adding subscriptions, and some refactoring.
+- [From zero to the first query](https://evilmartians.com/chronicles/graphql-on-rails-1-from-zero-to-the-first-query)—setting up a project, adding first queries to both back-end and front-end applications. (branch 'part-1')
+- [Updating the data](https://evilmartians.com/chronicles/graphql-on-rails-2-updating-the-data)—adding mutations. (branch 'part-2')
+- [On the way to perfection](https://evilmartians.com/chronicles/graphql-on-rails-3-on-the-way-to-perfection)—adding subscriptions, and some refactoring. (branch 'part-3')
 
 ## How to run on local machine
 
-TBD
+You need [nodejs](https://nodejs.org/en/download/) and [yarn](https://yarnpkg.com/lang/en/docs/install) installed
+
+`yarn && bundle && rails s`
 
 ## How to run with Docker
 
