@@ -14,7 +14,7 @@ TBD
 
 You need `docker` and `docker-compose` installed (for MacOS just use [official app](https://docs.docker.com/engine/installation/mac/)).
 
-##№ Provisioning
+## Provisioning
 
 Run the following commands to prepare your Docker dev env:
 
@@ -30,7 +30,7 @@ You're all set! Now you're ready to code!
 
 ## Commands
 
-* Running the app:
+- Running the app:
 
 You can run the Rails up using the following command:
 
