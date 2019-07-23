@@ -8,9 +8,9 @@ Example projecto for "GraphQL on Rails" tutorial:
 
 ## How to run on local machine
 
-You need [nodejs](https://nodejs.org/en/download/) and [yarn](https://yarnpkg.com/lang/en/docs/install) installed
+You need [nodejs](https://nodejs.org/en/download/) and [yarn](https://yarnpkg.com/lang/en/docs/install) installed.
 
-`yarn && bundle && rails s`
+Run `yarn && bundle && rails s` to make the magic happen.
 
 ## How to run with Docker
 
