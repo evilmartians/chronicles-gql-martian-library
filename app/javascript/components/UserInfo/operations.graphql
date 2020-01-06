@@ -8,7 +8,7 @@ query Me {
 }
 
 mutation SignMeIn($email: String!) {
-  signIn(email: $email) {
+  signIn(input: { email: $email }) {
     token
     user {
       id
