@@ -27,7 +27,7 @@ Item.create!(
     {
       title: "Doom",
       description: "A group of Marines is sent to the red planet via an ancient " \
-                    "Martian portal called the Ark to deal with an outbreak of a mutagenic virus",
+                   "Martian portal called the Ark to deal with an outbreak of a mutagenic virus",
       user: jane,
       image_url: "https://upload.wikimedia.org/wikipedia/en/5/57/Doom_cover_art.jpg"
     },

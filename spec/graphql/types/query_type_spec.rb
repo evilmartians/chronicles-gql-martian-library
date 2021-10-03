@@ -9,7 +9,7 @@ RSpec.describe Types::QueryType do
         items {
           title
         }
-       })
+      })
     end
 
     subject(:result) do
