@@ -1,4 +1,4 @@
-`gem install jsbundling-rails`
+`bundle add jsbundling-rails`
 
 `./bin/bundle install`
 
@@ -17,7 +17,7 @@
 secret: `yarn add -D prettier`
 
 // `yarn add -D @babel/core babel-loader @babel/preset-env @babel/preset-react --save-dev`
-`yarn add -D babel-preset-react-app --save-dev --save-dev`
+`yarn add -D babel-preset-react-app --save-dev`
 
 `touch '.babelrc'`
 
