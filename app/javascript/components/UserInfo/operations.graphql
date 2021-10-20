@@ -1,0 +1,16 @@
+query Me {
+  me {
+    id
+    fullName
+  }
+}
+
+mutation SignMeIn($email: String!) {
+  signIn(email: $email) {
+    token
+    user {
+      id
+      fullName
+    }
+  }
+}
