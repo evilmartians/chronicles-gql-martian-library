@@ -5,11 +5,23 @@ import { Me, SignMeIn } from './operations.graphql';
 
 const UserInfo = () => {
   const { data, loading } = useQuery(Me);
-  const [signIn, { data: signInPayload }] = useMutation(SignMeIn);
+  const [signIn, { data: signInPayload }] = useMutation(SignMeIn, {
+    update(cache, mutationResult) {
+      const me = mutationResult?.data?.signIn?.user;
+      if (me)
+        cache.writeQuery({
+          query: Me,
+          data: { me },
+        });
+    },
+  });
+
   const input = useRef(null);
 
   const token = signInPayload?.signIn.token;
   const me = data?.me;
+
+  console.log(token);
 
   useEffect(() => {
     if (token) {

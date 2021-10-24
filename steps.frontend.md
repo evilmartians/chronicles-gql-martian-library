@@ -36,4 +36,16 @@ we will use `useEffect` to store token
 TODO: update npx create-gql-component or add 'resolve' to webpack.config
 `import cs from './styles' -> `import cs from './styles.module.css';`
 
-refetch me query using `refetch`
+How we can update the cache
+
+1. refetch `me` query using `refetch` in `QueryResult`
+2. refetch `me` query using `refetchQueries` property of the `useMutation` hook
+3. manually write query with `writeQuery` method (`update` method in `MutationResult`). We will use this one
+4. manually update the cache with `cache.modify`
+
+Explain why we need to update the cache manually. We wouldn't have to update the cache if the user with `id` already existed in the cache
+
+Add `Authorization` token to `utils/apollo.js`
+`npx @hellsquirrel/create-gql-component create app/javascript/components/Library`
+
+Add `Library` query
