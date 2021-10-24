@@ -47,5 +47,5 @@ Explain why we need to update the cache manually. We wouldn't have to update the
 
 Add `Authorization` token to `utils/apollo.js`
 `npx @hellsquirrel/create-gql-component create app/javascript/components/Library`
-
-Add `Library` query
+`npx @hellsquirrel/create-gql-component create app/javascript/components/ProcessItemForm`
+`npx @hellsquirrel/create-gql-component create app/javascript/components/AddItemForm`

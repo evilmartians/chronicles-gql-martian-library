@@ -1,0 +1,18 @@
+mutation AddItemMutation(
+  $title: String!
+  $description: String
+  $imageUrl: String
+) {
+  addItem(title: $title, description: $description, imageUrl: $imageUrl) {
+    item {
+      id
+      title
+      description
+      imageUrl
+      user {
+        id
+        email
+      }
+    }
+  }
+}
