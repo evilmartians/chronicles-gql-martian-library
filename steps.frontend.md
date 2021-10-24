@@ -49,3 +49,6 @@ Add `Authorization` token to `utils/apollo.js`
 `npx @hellsquirrel/create-gql-component create app/javascript/components/Library`
 `npx @hellsquirrel/create-gql-component create app/javascript/components/ProcessItemForm`
 `npx @hellsquirrel/create-gql-component create app/javascript/components/AddItemForm`
+`npx @hellsquirrel/create-gql-component create app/javascript/components/UpdateItemForm`
+
+Add optimistic response (no `__typename` for 'updateItem' mutation)
