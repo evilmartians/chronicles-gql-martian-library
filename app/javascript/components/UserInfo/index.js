@@ -21,8 +21,6 @@ const UserInfo = () => {
   const token = signInPayload?.signIn.token;
   const me = data?.me;
 
-  console.log(token);
-
   useEffect(() => {
     if (token) {
       localStorage.setItem('mlToken', token);
