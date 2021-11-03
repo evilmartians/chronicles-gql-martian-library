@@ -9,14 +9,12 @@ module Mutations
     field :errors, [String], null: false
 
     def resolve(id:, title:, description: nil, image_url: nil)
-      if context[:current_user].nil?
-        raise GraphQL::ExecutionError,
-              "You need to authenticate to perform this action"
-      end
+      check_authentication!
 
       item = Item.find(id)
 
       if item.update(title: title, description: description, image_url: image_url)
+        MartianLibrarySchema.subscriptions.trigger("itemUpdated", {}, item)
         { item: item }
       else
         { errors: item.errors.full_messages }

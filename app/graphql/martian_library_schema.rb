@@ -1,6 +1,7 @@
 class MartianLibrarySchema < GraphQL::Schema
   mutation(Types::MutationType)
   query(Types::QueryType)
+  subscription(Types::SubscriptionType)
 
   # Union and Interface Resolution
   def self.resolve_type(abstract_type, obj, ctx)
