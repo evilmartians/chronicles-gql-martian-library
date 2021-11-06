@@ -5,7 +5,7 @@ import { Me, SignMeIn } from './operations.graphql';
 
 const UserInfo = () => {
   const { data, loading } = useQuery(Me);
-  const [signIn, { data: signInPayload }] = useMutation(SignMeIn, {
+  const [signIn, { data: signInPayload, error }] = useMutation(SignMeIn, {
     update(cache, mutationResult) {
       const me = mutationResult?.data?.signIn?.user;
       if (me)
@@ -45,6 +45,7 @@ const UserInfo = () => {
           className={cs.input}
           placeholder="your email"
         />
+        {error && <span>{error.message}</span>
       </form>
     );
   }

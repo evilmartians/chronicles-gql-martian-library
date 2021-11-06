@@ -1,18 +1,28 @@
+#/app/javascript/components/AddItemForm/operations.graphql
+#import '../../fragments/Item.graphql'
+
 mutation AddItemMutation(
   $title: String!
   $description: String
   $imageUrl: String
 ) {
-  addItem(title: $title, description: $description, imageUrl: $imageUrl) {
+  addItem({
+    input: {
+      title: $title,
+      description: $description,
+      imageUrl: $imageUrl
+    }
+  }) {
     item {
-      id
-      title
-      description
-      imageUrl
+      ...ItemFragment
       user {
         id
         email
       }
+    }
+    errors {
+      # new field
+      fullMessages
     }
   }
 }

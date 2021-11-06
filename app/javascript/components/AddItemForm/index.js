@@ -8,7 +8,7 @@ import { useMutation } from '@apollo/client';
 const AddItemForm = () => {
   const [addItem, { loading }] = useMutation(AddItemMutation, {
     // adding the second argument to 'addItem' method
-    update: (cache, { data: { addItem } }) => {
+    update: (cache, { data: { addItem, errors } }) => {
       const item = addItem.item;
       if (item) {
         const currentItems = cache.readQuery({ query: LibraryQuery });
@@ -34,6 +34,7 @@ const AddItemForm = () => {
           },
         })
       }
+      errors={errors}
     />
   );
 };
