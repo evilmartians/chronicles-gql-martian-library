@@ -6,13 +6,13 @@ mutation AddItemMutation(
   $description: String
   $imageUrl: String
 ) {
-  addItem({
-    input: {
-      title: $title,
-      description: $description,
+  addItem(
+    attributes: {
+      title: $title
+      description: $description
       imageUrl: $imageUrl
     }
-  }) {
+  ) {
     item {
       ...ItemFragment
       user {

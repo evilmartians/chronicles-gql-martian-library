@@ -45,7 +45,7 @@ const UserInfo = () => {
           className={cs.input}
           placeholder="your email"
         />
-        {error && <span>{error.message}</span>
+        {error && <span>{error.message}</span>}
       </form>
     );
   }
