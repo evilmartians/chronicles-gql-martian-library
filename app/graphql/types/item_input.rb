@@ -1,6 +1,6 @@
 module Types
-  class ItemAttributes < Types::BaseInputObject
-    description "Attributes for creating or updating an item"
+  class ItemInput < Types::BaseInputObject
+    description "Input for creating or updating an item"
 
     argument :title, String, required: true
     argument :description, String, required: false

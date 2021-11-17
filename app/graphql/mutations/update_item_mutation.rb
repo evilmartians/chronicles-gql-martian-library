@@ -1,19 +1,17 @@
 module Mutations
   class UpdateItemMutation < Mutations::BaseMutation
     argument :id, ID, required: true
-    argument :title, String, required: true
-    argument :description, String, required: false
-    argument :image_url, String, required: false
+    argument :input, Types::ItemInput, required: true
 
     field :item, Types::ItemType, null: true
     field :errors, [String], null: false
 
-    def resolve(id:, title:, description: nil, image_url: nil)
+    def resolve(id:, input:)
       check_authentication!
 
       item = Item.find(id)
 
-      if item.update(title: title, description: description, image_url: image_url)
+      if item.update(input.to_h)
         MartianLibrarySchema.subscriptions.trigger("itemUpdated", {}, item)
         { item: item }
       else
