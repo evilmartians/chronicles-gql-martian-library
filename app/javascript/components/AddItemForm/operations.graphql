@@ -7,7 +7,7 @@ mutation AddItemMutation(
   $imageUrl: String
 ) {
   addItem(
-    attributes: {
+    input: {
       title: $title
       description: $description
       imageUrl: $imageUrl
