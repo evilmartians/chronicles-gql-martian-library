@@ -10,3 +10,21 @@ query LibraryQuery {
     }
   }
 }
+
+subscription ItemSubscription {
+  itemAdded {
+    ...ItemFragment
+    user {
+      id
+      email
+    }
+  }
+
+  itemUpdated {
+    ...ItemFragment
+    user {
+      id
+      email
+    }
+  }
+}

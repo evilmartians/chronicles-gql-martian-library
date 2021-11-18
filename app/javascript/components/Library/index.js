@@ -1,13 +1,12 @@
 // app/javascript/components/Library
 import React, { useState } from 'react';
-import { LibraryQuery } from './operations.graphql';
 import cs from './styles.module.css';
-import { useQuery } from '@apollo/client';
 import UpdateItemForm from '../UpdateItemForm';
+import { useLibraryQuery } from './useLibraryQuery';
 
 const Library = () => {
   const [item, setItem] = useState(null);
-  const { data, loading } = useQuery(LibraryQuery);
+  const { data, loading } = useLibraryQuery();
   return (
     <div className={cs.library}>
       {loading || !data.items
