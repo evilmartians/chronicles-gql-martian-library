@@ -19,12 +19,20 @@ export const createCache = () => {
   return cache;
 };
 
-const getTokens = () => ({
-  'X-CSRF-Token': document
-    .querySelector('meta[name="csrf-token"]')
-    .getAttribute('content'),
-  Authorization: localStorage.getItem('mlToken'),
-});
+const getTokens = () => {
+  const tokens = {
+    'X-CSRF-Token': document
+      .querySelector('meta[name="csrf-token"]')
+      .getAttribute('content'),
+  };
+
+  const mlToken = localStorage.getItem('mlToken');
+  if (mlToken) {
+    tokens['Authorization'] = localStorage.getItem('mlToken');
+  }
+
+  return tokens;
+};
 
 // link with token
 const createLinkWithToken = () =>

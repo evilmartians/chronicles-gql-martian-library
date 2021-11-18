@@ -38,6 +38,7 @@ const UserInfo = () => {
             variables: { email: input.current.value },
           });
         }}
+        className={cs.form}
       >
         <input
           ref={input}
