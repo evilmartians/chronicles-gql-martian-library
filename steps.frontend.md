@@ -61,3 +61,7 @@ Add errors element to // app/javascript/components/AddItemForm/index.js
 /app/javascript/components/ProcessItemForm/styles.module.css:" - just add it to the create-gql-component command
 
 Add exception handling logic to the UserInfo component
+
+`yarn add actioncable graphql-ruby-client`
+
+`npx @hellsquirrel/create-gql-component create /app/javascript/components/Subscription`
