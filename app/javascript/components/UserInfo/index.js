@@ -31,27 +31,29 @@ const UserInfo = () => {
 
   if (!me) {
     return (
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-          signIn({
-            variables: { email: input.current.value },
-          });
-        }}
-        className={cs.form}
-      >
-        <input
-          ref={input}
-          type="email"
-          className={cs.input}
-          placeholder="your email"
-        />
-        {error && <span>{error.message}</span>}
-      </form>
+      <div className={cs.panel}>
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+            signIn({
+              variables: { email: input.current.value },
+            });
+          }}
+          className={cs.form}
+        >
+          <input
+            ref={input}
+            type="email"
+            className={cs.input}
+            placeholder="your email"
+          />
+          {error && <span>{error.message}</span>}
+        </form>
+      </div>
     );
   }
 
-  return <div className={cs.info}>😈 {me?.fullName}</div>;
+  return <div className={cs.panel}>😈 {me?.fullName}</div>;
 };
 
 export default UserInfo;
