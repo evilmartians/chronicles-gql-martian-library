@@ -1,0 +1,6 @@
+fragment UserFragment on Item {
+  user {
+    id
+    email
+  }
+}

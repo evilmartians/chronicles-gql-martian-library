@@ -1,7 +1,7 @@
 // app/javascript/components/AddItemForm/index.js
 import React from 'react';
 import { AddItemMutation } from './operations.graphql';
-import LibraryQuery from '../Library/operations.graphql';
+import { LibraryQuery } from '../Library/operations.graphql';
 import ProcessItemForm from '../ProcessItemForm';
 import { useMutation } from '@apollo/client';
 

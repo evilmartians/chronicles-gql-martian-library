@@ -1,41 +1,47 @@
 // /app/javascript/components/Subscription/index.js
 import React, { useEffect } from 'react';
-import { useQuery } from '@apollo/client'
-import { ItemSubscription, LibraryQuery } from './operations.graphql';
-
+import { useQuery } from '@apollo/client';
+import {
+  UpdateItemSubscription,
+  AddItemSubscription,
+  LibraryQuery,
+} from './operations.graphql';
 
 export const useLibraryQuery = () => {
-  const { data, loading,  subscribeToMore } = useQuery(LibraryQuery);
+  const { data, loading, subscribeToMore } = useQuery(LibraryQuery);
 
   useEffect(() => {
     return subscribeToMore({
-      document: ItemSubscription,
+      document: UpdateItemSubscription,
       updateQuery: (prev, { subscriptionData }) => {
         if (!subscriptionData.data) return prev;
-        const { itemAdded, itemUpdated } = subscriptionData.data;
-
-        if (itemAdded) {
-          const alreadyInList = prev.items.find((e) => e.id === itemAdded.id);
-          if (alreadyInList) {
-            return prev;
-          }
-
-          return { ...prev, items: prev.items.concat([itemAdded]) };
-        }
-
-        if (itemUpdated) {
-          return {
-            ...prev,
-            items: prev.items.map((el) =>
-              el.id === itemUpdated.id ? { ...el, ...itemUpdated } : el
-            ),
-          };
-        }
-
-        return prev;
+        const { itemUpdated } = subscriptionData.data;
+        return {
+          ...prev,
+          items: prev.items.map((el) =>
+            el.id === itemUpdated.id ? { ...el, ...itemUpdated } : el
+          ),
+        };
       },
     });
   }, []);
 
-  return { data, loading }
+  useEffect(() => {
+    return subscribeToMore({
+      document: AddItemSubscription,
+      updateQuery: (prev, { subscriptionData }) => {
+        if (!subscriptionData.data) return prev;
+        const { itemAdded } = subscriptionData.data;
+
+        const alreadyInList = prev.items.find((e) => e.id === itemAdded.id);
+        if (alreadyInList) {
+          return prev;
+        }
+
+        return { ...prev, items: prev.items.concat([itemAdded]) };
+      },
+    });
+  }, []);
+
+  return { data, loading };
 };
