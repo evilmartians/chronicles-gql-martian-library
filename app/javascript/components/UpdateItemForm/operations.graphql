@@ -6,9 +6,7 @@ mutation UpdateItemMutation(
 ) {
   updateItem(
     id: $id
-    title: $title
-    description: $description
-    imageUrl: $imageUrl
+    input: { title: $title, description: $description, imageUrl: $imageUrl }
   ) {
     item {
       id

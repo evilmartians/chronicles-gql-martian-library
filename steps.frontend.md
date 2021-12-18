@@ -1,4 +1,4 @@
-`bundle add jsbundling-rails`
+`bundle add jsbundling-rails` (or -j webpack)
 
 `./bin/bundle install`
 
@@ -52,3 +52,18 @@ Add `Authorization` token to `utils/apollo.js`
 `npx @hellsquirrel/create-gql-component create app/javascript/components/UpdateItemForm`
 
 Add optimistic response (no `__typename` for 'updateItem' mutation)
+
+Add Add Item fragment
+Add `errors` field to #/app/javascript/components/AddItemForm/operations.graphql
+Add errors element to // app/javascript/components/AddItemForm/index.js
+
+✂️ "If you want to make your errors appear a little bit nicer, add the following styles to
+/app/javascript/components/ProcessItemForm/styles.module.css:" - just add it to the create-gql-component command
+
+add input to add item and update item
+
+Add exception handling logic to the UserInfo component
+
+`yarn add actioncable graphql-ruby-client`
+
+`npx @hellsquirrel/create-gql-component create /app/javascript/components/Subscription`
